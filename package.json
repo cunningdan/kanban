@@ -1,11 +1,9 @@
-
-  {
-    "name": "kanban",
-    "version": "1.0.0",
-    "scripts": {
-      "setup": "npm run setup:client && npm run setup:server",
-      "setup:client": "cd kanban.client && npm i",
-      "setup:server": "cd kanban.server && npm i"
-    }
+{
+  "name": "kanban",
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "npm run setup:client && npm run setup:server",
+    "setup:client": "cd kanban.client && npm i",
+    "setup:server": "cd kanban.server && npm i"
   }
-  
+}
