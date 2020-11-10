@@ -2,12 +2,15 @@
   <div class="home container-fluid ">
     <form class="row" @submit="createBoard">
       <input type="text" v-model="state.newBoard.title">
-      <button type="submit">Create Board</button>
+      <button type="submit">
+        Create Board
+      </button>
     </form>
     <div class="col-12">
-      <board-component v-for="board in boards" :key="board" :board-Prop="board" />
+      <board-component v-for="board in boards" :key="board" :board-prop="board" />
     </div>
   </div>
+  <!-- HERES A COMMENT FROM TYSON -->
 </template>
 
 <script>
