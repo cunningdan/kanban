@@ -10,7 +10,6 @@
       <board-component v-for="board in boards" :key="board" :board-prop="board" />
     </div>
   </div>
-  <!-- HERES A COMMENT FROM TYSON -->
 </template>
 
 <script>
