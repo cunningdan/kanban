@@ -1,15 +1,39 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo">
-    <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
-      <span class="mx-2 text-white">Vue 3 Starter</span>
-    </h1>
+  <div class="home container-fluid ">
+    <form class="row" @submit="createBoard">
+      <input type="text" v-model="state.newBoard.title">
+      <button type="submit">Create Board</button>
+    </form>
+    <div class="col-12">
+      <board-component v-for="board in boards" :key="board" :board-Prop="board" />
+    </div>
   </div>
 </template>
 
 <script>
+import { reactive, onMounted, computed } from 'vue'
+import BoardComponent from '../components/BoardComponent'
+import { boardService } from '../services/BoardService'
+import { AppState } from '../AppState'
+import { profileService } from '../services/ProfileService'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    onMounted(() => {
+      boardService.getBoards()
+    })
+    const state = reactive({
+      newBoard: {}
+    })
+    return {
+      state,
+      createBoard() {
+        boardService.create(state.newBoard)
+      },
+      users: computed(() => AppState.users)
+    }
+  },
+  components: { BoardComponent }
 }
 </script>
 
