@@ -6,7 +6,7 @@
         Create Board
       </button>
     </form>
-    <div class="col-12">
+    <div class="col-3">
       <board-component v-for="board in boards" :key="board" :board-prop="board" />
     </div>
   </div>
@@ -17,7 +17,6 @@ import { reactive, onMounted, computed } from 'vue'
 import BoardComponent from '../components/BoardComponent'
 import { boardService } from '../services/BoardService'
 import { AppState } from '../AppState'
-import { profileService } from '../services/ProfileService'
 export default {
   name: 'Home',
   setup() {
@@ -32,7 +31,9 @@ export default {
       createBoard() {
         boardService.create(state.newBoard)
       },
-      users: computed(() => AppState.users)
+      users: computed(() => AppState.users),
+
+      boards: computed(() => AppState.boards)
     }
   },
   components: { BoardComponent }

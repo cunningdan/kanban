@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
 const List = new Schema(
   {
-    board: { type: String, required: true },
+    board: { type: ObjectId, required: true },
     title: { type: String, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
