@@ -28,6 +28,24 @@ class BoardService {
       console.error(err)
     }
   }
+
+  async deleteBoard(boardId) {
+    try {
+      await api.delete('/api/boards/' + boardId)
+      this.getBoards()
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  async editBoard(boardId, boardData) {
+    try {
+      await api.put('/api/boards/' + boardId, boardData)
+      this.getBoards()
+    } catch (err) {
+      console.error(err)
+    }
+  }
 }
 
 export const boardService = new BoardService()

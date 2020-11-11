@@ -20,6 +20,24 @@ class TaskService {
       console.error(err)
     }
   }
+
+  async editTask(taskId, taskData) {
+    try {
+      await api.put('/api/tasks/' + taskId, taskData)
+      this.getTasks(taskData.listId)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  async deleteTask(taskId, taskData) {
+    try {
+      await api.delete('/api/tasks/' + taskId)
+      this.getTasks(taskData.listId)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 }
 
 export const taskService = new TaskService()

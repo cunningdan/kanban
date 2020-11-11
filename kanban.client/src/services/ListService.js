@@ -14,8 +14,26 @@ class ListService {
 
   async createList(listData) {
     try {
-      const res = await api.post('/api/lists', listData)
-      AppState.lists.push(res)
+      await api.post('/api/lists', listData)
+      this.getLists(listData.boardId)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  async editList(listId, listData) {
+    try {
+      await api.put('/api/lists/' + listId, listData)
+      this.getLists(listData.boardId)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  async deleteList(listId, listData) {
+    try {
+      await api.delete('/api/lists/' + listId)
+      this.getLists(listData.boardId)
     } catch (err) {
       console.error(err)
     }

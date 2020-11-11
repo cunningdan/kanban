@@ -4,7 +4,7 @@ import { BadRequest } from '../utils/Errors'
 
 class CommentService {
   async getComments(id) {
-    const data = await dbContext.Comments.find({ task: id }).populate('profile').populate('task')
+    const data = await dbContext.Comments.find({ taskId: id }).populate('profile').populate('task')
     return data
   }
 

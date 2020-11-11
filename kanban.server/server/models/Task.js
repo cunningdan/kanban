@@ -5,7 +5,8 @@ const ObjectId = Schema.Types.ObjectId
 const Task = new Schema(
   {
     listId: { type: ObjectId, ref: 'List', required: true },
-    title: { type: String, required: true }
+    title: { type: String, required: true },
+    profile: { type: String, ref: 'Profile', required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )

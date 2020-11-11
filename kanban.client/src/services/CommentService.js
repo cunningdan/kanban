@@ -20,6 +20,24 @@ class CommentService {
       console.error(err)
     }
   }
+
+  async editComment(commentId, commentData) {
+    try {
+      await api.put('/api/comments/' + commentId, commentData)
+      this.getComment(commentData.taskId)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  async deleteComment(commentId, commentData) {
+    try {
+      await api.delete('/api/comments/' + commentId)
+      this.getComment(commentData.taskId)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 }
 
 export const commentService = new CommentService()

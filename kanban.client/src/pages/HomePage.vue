@@ -32,7 +32,6 @@ export default {
         boardService.createBoard(state.newBoard)
       },
       users: computed(() => AppState.users),
-
       boards: computed(() => AppState.boards)
     }
   },

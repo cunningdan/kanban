@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/activeBoard/:boardId',
     name: 'ActiveBoard',
-    component: 'ActiveBoardPage',
+    component: loadPage('ActiveBoard'),
     beforeEnter: authGuard
   }
 ]

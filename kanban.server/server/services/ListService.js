@@ -4,7 +4,7 @@ import { BadRequest } from '../utils/Errors'
 
 class ListService {
   async getLists(id) {
-    const data = await dbContext.Lists.find({ board: id }).populate('profile')
+    const data = await dbContext.Lists.find({ boardId: id }).populate('profile')
     return data
   }
 
