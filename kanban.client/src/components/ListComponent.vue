@@ -4,7 +4,7 @@
     <form class="row form-group" @submit.prevent="createTask">
       <div class="col">
         <task-component v-for="task in tasks" :key="task" :task-prop="task" />
-        <input type="text" class="form-control" v-model="state.newTask">
+        <input type="text" class="form-control" v-model="state.newTask.title">
         <button type="submit" class="btn btn-dark shadow-lg">Create Task</button>
       </div>
     </form>
@@ -21,8 +21,7 @@ export default {
   props: ['listProp'],
   setup(props) {
     const state = reactive({
-      newTask: {
-      }
+      newTask: {}
     })
     onMounted(async() => {
       await taskService.getTasks(props.listProp._id)
@@ -31,6 +30,7 @@ export default {
       state,
       tasks: computed(() => AppState.tasks[props.listProp._id]),
       createTask() {
+        state.newTask.listId = props.listProp._id
         taskService.createTask(state.newTask)
       }
     }

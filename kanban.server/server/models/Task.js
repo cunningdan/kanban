@@ -4,7 +4,7 @@ const ObjectId = Schema.Types.ObjectId
 
 const Task = new Schema(
   {
-    list: { type: ObjectId, ref: 'List', required: true },
+    listId: { type: ObjectId, ref: 'List', required: true },
     title: { type: String, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }

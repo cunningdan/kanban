@@ -4,7 +4,7 @@ import { BadRequest } from '../utils/Errors'
 
 class TaskService {
   async getTasks(id) {
-    const data = await dbContext.Tasks.find({ list: id }).populate('profile')
+    const data = await dbContext.Tasks.find({ listId: id }).populate('profile')
     return data
   }
 

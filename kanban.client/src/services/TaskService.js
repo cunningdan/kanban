@@ -15,7 +15,7 @@ class TaskService {
   async createTask(taskData) {
     try {
       await api.post('/api/tasks', taskData)
-      this.getTasks(taskData.id)
+      this.getTasks(taskData.listId)
     } catch (err) {
       console.error(err)
     }

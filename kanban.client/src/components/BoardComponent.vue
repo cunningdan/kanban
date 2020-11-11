@@ -1,8 +1,10 @@
 <template>
   <div class="boardComponent">
-    <h3 @click="navigateTo('/activeBoard'), setActiveBoard()">
-      {{ boardProp.title }}
-    </h3>
+    <router-link :to="{name: 'ActiveBoard', params: {boardId: boardProp._id}}">
+      <h3>
+        {{ boardProp.title }}
+      </h3>
+    </router-link>
   </div>
 </template>
 
@@ -19,7 +21,6 @@ export default {
       users: computed(() => AppState.user),
       setActiveBoard() {
         router.push({
-
           name: 'ActiveBoard',
           params: {
             boardId: props.boardProp._id
