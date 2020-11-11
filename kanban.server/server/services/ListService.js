@@ -3,8 +3,9 @@ import List from '../models/List'
 import { BadRequest } from '../utils/Errors'
 
 class ListService {
-  async getLists(query = {}) {
-    return await dbContext.Lists.find(query)
+  async getLists(id) {
+    const data = await dbContext.Lists.find({ board: id }).populate('profile')
+    return data
   }
 
   async create(body) {

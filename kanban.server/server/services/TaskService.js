@@ -3,8 +3,9 @@ import Task from '../models/Task'
 import { BadRequest } from '../utils/Errors'
 
 class TaskService {
-  async getTasks(query = {}) {
-    return await dbContext.Tasks.find(query)
+  async getTasks(id) {
+    const data = await dbContext.Tasks.find({ list: id }).populate('profile')
+    return data
   }
 
   async create(body) {

@@ -4,7 +4,7 @@ const ObjectId = Schema.Types.ObjectId
 
 const List = new Schema(
   {
-    board: { type: ObjectId, required: true },
+    board: { type: ObjectId, ref: 'Board', required: true },
     title: { type: String, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }

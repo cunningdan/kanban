@@ -10,6 +10,7 @@
 import { AppState } from '../AppState'
 import { computed } from 'vue'
 import { boardService } from '../services/BoardService'
+import router from '../router'
 export default {
   name: 'BoardComponent',
   props: ['boardProp'],
@@ -17,6 +18,13 @@ export default {
     return {
       users: computed(() => AppState.user),
       setActiveBoard() {
+        router.push({
+
+          name: 'ActiveBoard',
+          params: {
+            boardId: props.boardProp._id
+          }
+        })
         boardService.setActiveBoard(props.boardProp)
       }
     }

@@ -28,17 +28,6 @@ class BoardService {
       console.error(err)
     }
   }
-
-  // async getActiveBoard(boardId) {
-  //   try {
-  //     // @ts-ignore
-  //     const res = await api.get('/boards', +boardId)
-  //     AppState.activeBoard = res.data
-  //     console.log(res.data)
-  //   } catch (err) {
-  //     console.error(err)
-  //   }
-  // }
 }
 
 export const boardService = new BoardService()

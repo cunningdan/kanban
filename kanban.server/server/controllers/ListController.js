@@ -1,22 +1,22 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { listService } from '../services/ListService'
 import BaseController from '../utils/BaseController'
+import { taskService } from '../services/TaskService'
 
 export class ListController extends BaseController {
   constructor() {
     super('api/lists')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getLists)
       .post('', this.createList)
       .delete('/:id', this.delete)
       .put('/:id', this.edit)
+      .get('/:listId/tasks', this.getTasks)
   }
 
-  async getLists(req, res, next) {
+  async getTasks(req, res, next) {
     try {
-      const data = listService.getLists(req.query)
-      res.send(data)
+      res.send(await taskService.getTasks(req.params.listId))
     } catch (error) {
       next(error)
     }
