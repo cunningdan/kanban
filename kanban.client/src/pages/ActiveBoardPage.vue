@@ -1,6 +1,5 @@
 <template>
   <div class="activeBoard container-fluid">
-    This Is Active
     <h3>{{ activeBoard.title }}</h3>
     <div class="row">
       <div class="col-3">
@@ -26,7 +25,8 @@ export default {
     return {
       activeBoard: computed(() => AppState.activeBoard),
       lists: computed(() => AppState.lists),
-      tasks: computed(() => AppState.tasks)
+      tasks: computed(() => AppState.tasks),
+      comments: computed(() => AppState.comments)
     }
   },
   components: { ListComponent }

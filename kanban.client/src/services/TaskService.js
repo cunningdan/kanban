@@ -6,7 +6,7 @@ class TaskService {
     try {
       const res = await api.get('/api/lists/' + listId + '/tasks')
       console.log(res)
-      AppState.tasks = res.data
+      AppState.tasks[listId] = res.data
     } catch (err) {
       console.error(err)
     }
@@ -14,8 +14,8 @@ class TaskService {
 
   async createTask(taskData) {
     try {
-      const res = await api.post('/tasks', taskData)
-      AppState.tasks.push(res)
+      await api.post('/api/tasks', taskData)
+      this.getTasks(taskData.id)
     } catch (err) {
       console.error(err)
     }

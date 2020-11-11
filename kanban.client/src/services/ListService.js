@@ -14,7 +14,7 @@ class ListService {
 
   async createList(listData) {
     try {
-      const res = await api.post('/lists', listData)
+      const res = await api.post('/api/lists', listData)
       AppState.lists.push(res)
     } catch (err) {
       console.error(err)

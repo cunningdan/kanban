@@ -1,6 +1,6 @@
 <template>
   <div class="home container-fluid ">
-    <form class="row" @submit="createBoard">
+    <form class="row" @submit.prevent="createBoard">
       <input type="text" v-model="state.newBoard.title">
       <button type="submit">
         Create Board
@@ -29,7 +29,7 @@ export default {
     return {
       state,
       createBoard() {
-        boardService.create(state.newBoard)
+        boardService.createBoard(state.newBoard)
       },
       users: computed(() => AppState.users),
 

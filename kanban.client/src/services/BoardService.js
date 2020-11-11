@@ -14,8 +14,8 @@ class BoardService {
 
   async createBoard(boardData) {
     try {
-      const res = await api.post('/boards', boardData)
-      AppState.boards.push(res)
+      const res = await api.post('/api/boards', boardData)
+      AppState.boards.push(res.data)
     } catch (err) {
       console.error(err)
     }
