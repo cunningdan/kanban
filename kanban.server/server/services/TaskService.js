@@ -3,8 +3,15 @@ import Task from '../models/Task'
 import { BadRequest } from '../utils/Errors'
 
 class TaskService {
+
+  async changeId(body, id) {
+    await dbContext.Tasks.findByIdAndUpdate(id, body, { new: true })
+    if (!Task) {
+      throw new BadRequest('No found Task')
+    }return this.getTasks()
+  }
   async getTasks(id) {
-    const data = await dbContext.Tasks.find({ listId: id }).populate('profile')
+    const data = await dbContext.Tasks.find({ listId: id }).populate('list')
     return data
   }
 
@@ -18,7 +25,7 @@ class TaskService {
     if (userId === taskProfile.profile) {
       await dbContext.Tasks.findByIdAndDelete(id)
       if (!Task) {
-        throw new BadRequest('No found Board')
+        throw new BadRequest('No found Task')
       } return this.getTasks()
     } throw new BadRequest('Access Denied')
   }
@@ -26,7 +33,7 @@ class TaskService {
   async edit(id, body) {
     await dbContext.Tasks.findByIdAndUpdate(id, body, { new: true })
     if (!Task) {
-      throw new BadRequest('No found Board')
+      throw new BadRequest('No found Task')
     } return this.getTasks()
   }
 }

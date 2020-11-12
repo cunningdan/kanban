@@ -11,9 +11,17 @@ export class TaskController extends BaseController {
       .post('', this.createTask)
       .delete('/:id', this.delete)
       .put('/:id', this.edit)
+      .put('/:id', this.changeId)
       .get('/:taskId/comments', this.getComments)
   }
 
+  async changeId(req, res, next) {
+    try {
+      res.send(await taskService.changeId(req.body, req.params.taskId))
+    } catch (err) {
+      next(err)
+    }
+  }
   async createTask(req, res, next) {
     try {
       req.body.profile = req.userInfo.id

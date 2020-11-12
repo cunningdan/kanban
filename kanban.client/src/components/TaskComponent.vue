@@ -3,6 +3,20 @@
     <form class="form-group" @submit.prevent="editTask">
       <input type="text" class="form-control" v-model="state.changedTask.title">
     </form>
+    <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false">
+      Change List
+    </button>
+    <div class="dropdown-menu "
+    aria-labelledby="dropdownMenuButton">
+    <drop-list-component v-for="list in lists" :key="list" :drop-list-prop="list"/>
+    </div>
+  </div>
     <button class="btn btn-danger" @click="deleteTask">X</button>
     <comment-component v-for="comment in comments" :key="comment" :comment-prop="comment" />
     <form class="row form-group" @submit.prevent="createComment">
@@ -18,6 +32,7 @@ import CommentComponent from './CommentComponent'
 import { commentService } from '../services/CommentService'
 import { AppState } from '../AppState'
 import { taskService } from '../services/TaskService'
+import DropListComponent from './DropListComponent'
 export default {
   name: 'TaskComponent',
   props: ['taskProp'],
@@ -43,10 +58,11 @@ export default {
       },
       deleteTask() {
         taskService.deleteTask(props.taskProp._id, state.changedTask)
-      }
+      },
+      lists: computed(() => AppState.lists)
     }
   },
-  components: { CommentComponent }
+  components: { CommentComponent, DropListComponent }
 }
 </script>
 
