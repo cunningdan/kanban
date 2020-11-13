@@ -4,7 +4,7 @@
       <input type="text" class="form-control" v-model="state.changedTask.title">
     </form>
     <div class="dropdown">
-      <button  class="btn btn-primary dropdown-toggle"
+      <button class="btn btn-primary dropdown-toggle"
               type="button"
               id="dropdownMenuButton"
               data-toggle="dropdown"
@@ -46,8 +46,6 @@ import { listService } from '../services/ListService'
 import { AppState } from '../AppState'
 import { taskService } from '../services/TaskService'
 
-
-
 export default {
   name: 'TaskComponent',
   props: ['taskProp'],
@@ -58,7 +56,7 @@ export default {
       changedTask: {},
       selectedOption: null,
       options: [],
-      targetListId: props.taskProp._id,
+      targetListId: props.taskProp._id
     })
     onMounted(() => {
       state.changedTask.title = props.taskProp.title
@@ -76,10 +74,8 @@ export default {
       },
       updateListId(newListId) {
         if (newListId) {
-          console.log(state.changedTask)
           state.changedTask.listId = newListId
         }
-        console.log(state.changedTask, state.targetListId)
         taskService.editTask(props.taskProp._id, state.changedTask)
         listService.getLists(route.params.boardId)
       },

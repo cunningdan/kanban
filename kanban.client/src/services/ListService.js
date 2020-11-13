@@ -1,14 +1,14 @@
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
+import { logger } from '../utils/Logger'
 
 class ListService {
   async getLists(boardId) {
     try {
       const res = await api.get('/api/boards/' + boardId + '/lists')
-      console.log(res)
       AppState.lists = res.data
     } catch (err) {
-      console.error(err)
+      logger.error(err)
     }
   }
 
@@ -17,7 +17,7 @@ class ListService {
       await api.post('/api/lists', listData)
       this.getLists(listData.boardId)
     } catch (err) {
-      console.error(err)
+      logger.error(err)
     }
   }
 
@@ -26,7 +26,7 @@ class ListService {
       await api.put('/api/lists/' + listId, listData)
       this.getLists(listData.boardId)
     } catch (err) {
-      console.error(err)
+      logger.error(err)
     }
   }
 
@@ -35,7 +35,7 @@ class ListService {
       await api.delete('/api/lists/' + listId)
       this.getLists(listData.boardId)
     } catch (err) {
-      console.error(err)
+      logger.error(err)
     }
   }
 }

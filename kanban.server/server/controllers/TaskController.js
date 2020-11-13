@@ -22,6 +22,7 @@ export class TaskController extends BaseController {
       next(err)
     }
   }
+
   async createTask(req, res, next) {
     try {
       req.body.profile = req.userInfo.id
