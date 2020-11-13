@@ -28,6 +28,10 @@ class BoardService {
       throw new BadRequest('No found Board')
     } return this.getBoards()
   }
+
+  async getById(id) {
+    return await dbContext.Boards.findById(id)
+  }
 }
 
 export const boardService = new BoardService()

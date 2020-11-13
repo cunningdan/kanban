@@ -13,6 +13,7 @@ export class BoardController extends BaseController {
       .post('', this.createBoard)
       .delete('/:id', this.delete)
       .put('/:id', this.edit)
+      .get('/:boardId', this.getById)
   }
 
   async getBoards(req, res, next) {
@@ -52,6 +53,14 @@ export class BoardController extends BaseController {
   async edit(req, res, next) {
     try {
       res.send(await boardService.edit(req.params.id, req.body))
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  async getById(req, res, next) {
+    try {
+      res.send(await boardService.getById(req.params.boardId))
     } catch (err) {
       next(err)
     }

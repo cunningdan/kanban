@@ -119,4 +119,10 @@ a:hover {
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
 }
+
+nav{
+  border-style: solid;
+  border-width: thick;
+  border-color: rgba(255, 255, 255, 0.527);
+}
 </style>

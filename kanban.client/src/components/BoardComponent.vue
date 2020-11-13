@@ -1,14 +1,18 @@
 <template>
   <div class="boardComponent">
     <router-link :to="{name: 'ActiveBoard', params: {boardId: boardProp._id}}">
-      <h3>
+      <h3 class="m-2">
         {{ boardProp.title }}
       </h3>
     </router-link>
-    <button class="btn btn-danger" @click="deleteBoard">Delete</button>
     <form class="form-group" @submit="editBoard">
-      <input type="text" v-model="state.changedBoard.title">
-      <button class="btn btn-success" type="submit">Edit</button>
+      <input class="form-control" type="text" v-model="state.changedBoard.title">
+      <button class="btn btn-primary btn-lg my-3" type="submit">
+        Edit Board Name
+      </button>
+      <button class="btn btn-danger btn-lg m-3" @click="deleteBoard">
+        Delete
+      </button>
     </form>
   </div>
 </template>
@@ -39,5 +43,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+button{
+  border-style: solid;
+  border-color:rgba(41, 40, 40, 0.404);
+  border-width: thick;
+  padding: none;
+}
 
 </style>

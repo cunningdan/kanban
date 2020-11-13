@@ -21,9 +21,10 @@ class BoardService {
     }
   }
 
-  async setActiveBoard(boardData) {
+  async getActiveBoard(boardId) {
     try {
-      AppState.activeBoard = boardData
+      const res = await api.get('/api/boards/' + boardId)
+      AppState.activeBoard = res.data
     } catch (err) {
       console.error(err)
     }
