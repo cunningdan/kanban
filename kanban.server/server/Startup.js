@@ -22,7 +22,7 @@ export default class Startup {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", 'https://${domain}/*'],
+          scriptSrc: ["'self'", `https://${domain}/*`],
           styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
           imgSrc: ["'self'", '*githubusercontent.com', '*blob.core.windows.net'],
           connectSrc: ["'self'", `https://${domain}/oauth/token`, `https://${domain}/userinfo`],
