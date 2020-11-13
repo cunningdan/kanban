@@ -30,7 +30,8 @@ export default class Startup {
           objectSrc: ["'self'"],
           mediaSrc: ["'self'"],
           frameSrc: ["'self'", `https://${domain}/`]
-        }
+        },
+        reportOnly: false
       }
     }))
     app.use(cors(corsOptions))
