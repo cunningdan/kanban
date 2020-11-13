@@ -5,7 +5,7 @@
         {{ boardProp.title }}
       </h3>
     </router-link>
-    <form class="form-group" @submit="editBoard">
+    <form class="form-group" @submit.prevent="editBoard">
       <input class="form-control" type="text" v-model="state.changedBoard.title">
       <button class="btn btn-primary btn-lg my-3" type="submit">
         Edit Board Name
