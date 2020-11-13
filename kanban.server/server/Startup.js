@@ -29,8 +29,10 @@ export default class Startup {
           fontSrc: ["'self'", 'https://fonts.gstatic.com'],
           objectSrc: ["'self'"],
           mediaSrc: ["'self'"],
-          frameSrc: ["'self'", `https://${domain}`]
-        }))
+          frameSrc: ["'self'", `https://${domain}/`]
+        }
+      }
+    }))
     app.use(cors(corsOptions))
     app.use(bp.json({ limit: '50mb' }))
 
