@@ -16,7 +16,6 @@
       <div class="dropdown-menu "
            aria-labelledby="dropdownMenuButton"
       >
-        <!-- <multiselect v-model="state.selectedOption" :options="state.lists"></multiselect> -->
         <div v-for="list in lists" :key="list._id">
           <button @click="updateListId(list._id)" style="background: transparent; width: 100%; height: 100%; position: relative; border: none;">
             {{ list.title }}

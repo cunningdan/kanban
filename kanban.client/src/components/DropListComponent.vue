@@ -1,6 +1,6 @@
 <template>
   <div class="dropListComponent">
-    <a class="dropdown-item" @click="changeId">{{dropListProp.title}}</a>
+    <a class="dropdown-item" @click="changeId">{{ dropListProp.title }}</a>
   </div>
 </template>
 
